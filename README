@@ -1,0 +1,18 @@
+d3-MQTT-Topic-Tree (fork for personal test)
+===========================================
+
+A MQTT Topic Tree viewer using the d3 collapsable tree and MQTT over websockets
+
+* fork from d3-MQTT-Topic-Tree
+Original code :
+https://github.com/hardillb/d3-MQTT-Topic-Tree
+
+* test environment
+For use with Mosca (a node.js MQTT broker) as Websocket gateway of Mosquitto.
+
+run like this, Mosquitto is "parent" broker of mosca:
+./mosca --only-http --parent-host 192.168.1.60 --parent-port 1883 --http-port 3000
+
+                   ws                      mqtt
+browser <-----------> Mosca <-----------------> Mosquitto MQTT broker
+             tcp/3000                  tcp/1883     192.168.1.60

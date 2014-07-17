@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -9,8 +8,6 @@
     <script type="text/javascript" src="mqttws31.js"></script>
     <script type="text/javascript" src="topic-tree.js"></script>
     <style type="text/css">
-
-
 .node circle {
   cursor: pointer;
   fill: #fff;
@@ -43,14 +40,13 @@ path.link {
     </style>
   </head>
   <body>
-    <div id="body" style="width:1280px; height:800px; border=1px;">
-    	
+    <div id="body" style="width:1280px; height:600px; border:1px;">
     </div>
     <script type="text/javascript">
 
 setup("body");
 
-var client = new Messaging.Client(document.location.hostname,1883,"web" + new Date().getTime());
+var client = new Messaging.Client('localhost',3000,"web" + new Date().getTime());
 client.onMessageArrived = onMessage;
 client.onconnectionlost = onDisconnect;
 function onConnect(){
@@ -58,11 +54,10 @@ function onConnect(){
 	console.log("mqtt connected");
 }
 
-console.log("bar");
-client.connect({onSuccess:onConnect});
+client.connect({onSuccess:onConnect, keepAliveInterval:240});
 
 function onMessage(message) {
-	//console.log(message.topic + "- " + message.payload);
+	console.log(message.destinationName + " => " + message.payloadString);
 	addNode(message.destinationName, message.payloadString);
 }
 

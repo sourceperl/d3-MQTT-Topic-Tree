@@ -5,13 +5,16 @@
  * All rights reserved.
  */
 
+// some const
+var DIV_WIDTH  = 1280;
+var DIV_HEIGHT = 600;
+
+// some vars
 var m = [20, 120, 20, 120],
-    w = 1280 - m[1] - m[3],
-    h = 800 - m[0] - m[2],
+    w = DIV_WIDTH - m[1] - m[3],
+    h = DIV_HEIGHT - m[0] - m[2],
     i = 0,
     root;
-
-
 
 var tree; 
 
