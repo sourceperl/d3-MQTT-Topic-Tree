@@ -54,7 +54,7 @@ function onConnect(){
 	console.log("mqtt connected");
 }
 
-client.connect({onSuccess:onConnect, keepAliveInterval:240});
+client.connect({onSuccess:onConnect});
 
 function onMessage(message) {
 	console.log(message.destinationName + " => " + message.payloadString);
